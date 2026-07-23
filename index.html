@@ -487,48 +487,7 @@
     <p class="footer-note">데이터는 이 브라우저에 자동 저장됩니다. 다른 PC로 옮길 때는 JSON 내보내기를 사용하세요.</p>
   </main>
 
-  <dialog id="memberDialog">
-    <div class="modal-head">
-      <h2 id="dialogTitle">멤버 등록</h2>
-      <button class="icon-btn" id="closeDialogBtn" aria-label="닫기">✕</button>
-    </div>
-    <div class="modal-body">
-      <div class="field">
-        <label for="nicknameInput">닉네임</label>
-        <input id="nicknameInput" placeholder="예: 봄이로다" />
-      </div>
-      <div class="field">
-        <label for="levelInput">레벨</label>
-        <input id="levelInput" type="number" min="1" placeholder="예: 185" />
-      </div>
-      <div class="field">
-        <label for="jobInput">직업</label>
-        <input id="jobInput" placeholder="예: 히어로" />
-      </div>
-      <div class="field">
-        <label for="memberTypeInput">멤버 구분</label>
-        <select id="memberTypeInput">
-          <option value="fixed">고정 멤버</option>
-          <option value="mercenary">대타 용병</option>
-          <option value="partner">깐부</option>
-        </select>
-      </div>
-      <div class="field wide">
-        <label for="partnerGroupInput">깐부조 이름 또는 함께 채우는 사람</label>
-        <input id="partnerGroupInput" placeholder="예: A조 / 두광&봉구" />
-      </div>
-      <div class="field wide">
-        <label for="helmetInput">투구 획득 여부</label>
-        <select id="helmetInput">
-          <option value="false">아직 못 먹음</option>
-          <option value="true">먹음</option>
-        </select>
-      </div>
-    </div>
-    <div class="modal-foot">
-      <button class="btn" id="cancelDialogBtn">취소</button>
-      <button class="btn primary" id="saveMemberBtn">저장</button>
-    </div>
+
   </dialog>
 
   <script>
