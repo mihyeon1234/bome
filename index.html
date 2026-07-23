@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>백야 & APPLE 카오스 자쿰 출석부</title>
+  <title>백야 & APPLE 카오스 자쿰 출석부(봄이가만듬!!!!!!!)</title>
   <style>
     :root {
       --bg: #0b1020;
@@ -403,7 +403,7 @@
       </article>
       <article class="metric">
         <div class="label">최근 회차 참석</div>
-        <div class="value"><span id="latestAttendance">0</span><span class="mini">명</span></div>
+        <div class="value"><span id="latestAttendance">0</span><span class="mini">명 · <span id="latestAttendanceDate">-</span> 기준</span></div>
       </article>
       <article class="metric">
         <div class="label">투구 미획득</div>
@@ -441,9 +441,10 @@
         <div class="field">
           <label for="sortSelect">정렬</label>
           <select id="sortSelect">
-            <option value="priority">투구 우선순위</option>
-            <option value="level">레벨 높은 순</option>
+            <option value="priority">다음 투구 우선순위</option>
+            <option value="latestAttendance">최근 회차 참석 우선</option>
             <option value="attendance">누적 참석 많은 순</option>
+            <option value="level">레벨 높은 순</option>
             <option value="name">닉네임 가나다순</option>
           </select>
         </div>
@@ -451,8 +452,8 @@
 
       <div class="priority-note">
         <strong>투구 우선순위 규칙</strong><br>
-        ① 이미 투구를 먹은 멤버는 순위에서 제외됩니다. ② 고정 멤버는 레벨이 높은 순으로 배치됩니다.
-        ③ 대타 용병과 깐부는 누적 참석 횟수가 많은 순으로 배치됩니다.
+        ① 이미 투구를 먹은 멤버는 순위에서 제외됩니다. ② 누적 참석 횟수가 많은 멤버가 먼저입니다.
+        ③ 참석 횟수가 같으면 고정 멤버 → 대타 용병 → 깐부 순이며, 구분까지 같으면 레벨이 높은 순입니다.
       </div>
 
       <div class="table-wrap">
@@ -525,8 +526,10 @@
 
   <script>
     const STORAGE_KEY = "chaos-zakum-attendance-v1";
+    const INITIAL_DATA_VERSION = "2026-07-24-priority-v2";
 
 const initialState = {
+      dataVersion: INITIAL_DATA_VERSION,
       dates: ["07/17", "07/24", "07/31", "08/07", "08/14"],
       members: [
         // 매일 참석자
@@ -586,12 +589,18 @@ const initialState = {
     function loadState() {
       try {
         const saved = localStorage.getItem(STORAGE_KEY);
-        if (!saved) return initialState;
+        if (!saved) return structuredClone(initialState);
         const parsed = JSON.parse(saved);
-        if (!Array.isArray(parsed.dates) || !Array.isArray(parsed.members)) return initialState;
+        if (!Array.isArray(parsed.dates) || !Array.isArray(parsed.members)) return structuredClone(initialState);
+
+        // HTML 안의 initialState가 갱신되면 이전 브라우저 저장값 대신 새 초기 데이터를 한 번 반영합니다.
+        if (parsed.dataVersion !== INITIAL_DATA_VERSION) {
+          return structuredClone(initialState);
+        }
+
         return parsed;
       } catch {
-        return initialState;
+        return structuredClone(initialState);
       }
     }
 
@@ -599,29 +608,66 @@ const initialState = {
       localStorage.setItem(STORAGE_KEY, JSON.stringify(state));
     }
 
-    function attendanceCount(member) {
+    function currentAttendanceCount(member) {
       return member.attendance.filter(Boolean).length;
+    }
+
+    function attendanceCount(member) {
+      return Number(member.previousAttendance || 0) + currentAttendanceCount(member);
     }
 
     function typeText(type) {
       return { fixed: "고정 멤버", mercenary: "대타 용병", partner: "깐부" }[type];
     }
 
+    function typePriority(type) {
+      return { fixed: 0, mercenary: 1, partner: 2 }[type] ?? 9;
+    }
+
+    function getLatestActiveAttendanceIndex() {
+      for (let index = state.dates.length - 1; index >= 0; index -= 1) {
+        if (state.members.some(member => Boolean(member.attendance[index]))) return index;
+      }
+      return -1;
+    }
+
+    function getLastAttendedIndex(member) {
+      for (let index = member.attendance.length - 1; index >= 0; index -= 1) {
+        if (member.attendance[index]) return index;
+      }
+      return -1;
+    }
+
+    function baseTieCompare(a, b) {
+      const typeDiff = typePriority(a.type) - typePriority(b.type);
+      if (typeDiff !== 0) return typeDiff;
+
+      if (b.level !== a.level) return b.level - a.level;
+      return a.nickname.localeCompare(b.nickname, "ko");
+    }
+
     function priorityCompare(a, b) {
       if (a.helmet !== b.helmet) return a.helmet ? 1 : -1;
 
-      const aGroup = a.type === "fixed" ? 0 : 1;
-      const bGroup = b.type === "fixed" ? 0 : 1;
-      if (aGroup !== bGroup) return aGroup - bGroup;
+      const attendanceDiff = attendanceCount(b) - attendanceCount(a);
+      if (attendanceDiff !== 0) return attendanceDiff;
 
-      if (aGroup === 0) {
-        if (b.level !== a.level) return b.level - a.level;
-        return attendanceCount(b) - attendanceCount(a);
-      }
+      return baseTieCompare(a, b);
+    }
+
+    function latestAttendanceCompare(a, b) {
+      const latestIndex = getLatestActiveAttendanceIndex();
+      const aLatest = latestIndex >= 0 && Boolean(a.attendance[latestIndex]);
+      const bLatest = latestIndex >= 0 && Boolean(b.attendance[latestIndex]);
+      if (aLatest !== bLatest) return aLatest ? -1 : 1;
+
+      const lastAttendanceDiff = getLastAttendedIndex(b) - getLastAttendedIndex(a);
+      if (lastAttendanceDiff !== 0) return lastAttendanceDiff;
 
       const attendanceDiff = attendanceCount(b) - attendanceCount(a);
       if (attendanceDiff !== 0) return attendanceDiff;
-      return b.level - a.level;
+
+      return baseTieCompare(a, b);
     }
 
     function getFilteredMembers() {
@@ -643,8 +689,15 @@ const initialState = {
       });
 
       list.sort((a, b) => {
-        if (sort === "level") return b.level - a.level;
-        if (sort === "attendance") return attendanceCount(b) - attendanceCount(a);
+        if (sort === "latestAttendance") return latestAttendanceCompare(a, b);
+        if (sort === "attendance") {
+          const diff = attendanceCount(b) - attendanceCount(a);
+          return diff !== 0 ? diff : baseTieCompare(a, b);
+        }
+        if (sort === "level") {
+          const diff = b.level - a.level;
+          return diff !== 0 ? diff : a.nickname.localeCompare(b.nickname, "ko");
+        }
         if (sort === "name") return a.nickname.localeCompare(b.nickname, "ko");
         return priorityCompare(a, b);
       });
@@ -699,7 +752,7 @@ const initialState = {
           <td><div class="attendance">${attHtml}</div></td>
           <td>
             <div class="count">${attendanceCount(member)}회</div>
-            <div class="subtext">총 ${state.dates.length}회 중</div>
+            <div class="subtext">이전 ${Number(member.previousAttendance || 0)}회 + 현재 ${currentAttendanceCount(member)}회</div>
           </td>
           <td>
             <button class="badge ${member.helmet ? "helmet-yes" : "helmet-no"}"
@@ -726,6 +779,8 @@ const initialState = {
     function normalizeAttendanceLength() {
       state.members.forEach(member => {
         if (!Array.isArray(member.attendance)) member.attendance = [];
+        if (!Number.isFinite(Number(member.previousAttendance))) member.previousAttendance = 0;
+        member.previousAttendance = Number(member.previousAttendance);
         while (member.attendance.length < state.dates.length) member.attendance.push(false);
         if (member.attendance.length > state.dates.length) {
           member.attendance = member.attendance.slice(0, state.dates.length);
@@ -735,11 +790,12 @@ const initialState = {
 
     function renderMetrics() {
       el("memberCount").textContent = state.members.length;
-      const latestIndex = state.dates.length - 1;
+      const latestIndex = getLatestActiveAttendanceIndex();
       const latestCount = latestIndex >= 0
         ? state.members.filter(m => m.attendance[latestIndex]).length
         : 0;
       el("latestAttendance").textContent = latestCount;
+      el("latestAttendanceDate").textContent = latestIndex >= 0 ? state.dates[latestIndex] : "기록 없음";
       el("helmetPending").textContent = state.members.filter(m => !m.helmet).length;
 
       const next = state.members.filter(m => !m.helmet).sort(priorityCompare)[0];
@@ -788,6 +844,7 @@ const initialState = {
           type,
           partnerGroup,
           helmet,
+          previousAttendance: 0,
           attendance: Array(state.dates.length).fill(false)
         });
       }
