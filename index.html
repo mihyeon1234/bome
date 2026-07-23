@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>백야 & APPLE 카오스 자쿰 출석부(봄이가만듬!!!!!!!)</title>
+  <title>백야 &amp; APPLE 카오스 자쿰 출석부</title>
   <style>
     :root {
       --bg: #0b1020;
@@ -18,23 +18,23 @@
       --red: #ff6f7d;
       --blue: #66a8ff;
       --purple: #a98bff;
-      --shadow: 0 18px 44px rgba(0,0,0,.28);
+      --shadow: 0 18px 44px rgba(0, 0, 0, 0.28);
     }
 
     * { box-sizing: border-box; }
+
     body {
       margin: 0;
-      background:
-        radial-gradient(circle at 10% 0%, rgba(255,157,54,.14), transparent 28%),
-        radial-gradient(circle at 100% 20%, rgba(102,168,255,.10), transparent 30%),
-        var(--bg);
-      color: var(--text);
-      font-family: Pretendard, "Noto Sans KR", Arial, sans-serif;
       min-height: 100vh;
+      color: var(--text);
+      background:
+        radial-gradient(circle at 10% 0%, rgba(255, 157, 54, 0.14), transparent 28%),
+        radial-gradient(circle at 100% 20%, rgba(102, 168, 255, 0.10), transparent 30%),
+        var(--bg);
+      font-family: Pretendard, "Noto Sans KR", Arial, sans-serif;
     }
 
-    button, input, select { font: inherit; }
-    button { cursor: pointer; }
+    input, select { font: inherit; }
 
     .app {
       width: min(1500px, calc(100% - 28px));
@@ -43,10 +43,6 @@
     }
 
     .hero {
-      display: flex;
-      align-items: flex-end;
-      justify-content: space-between;
-      gap: 18px;
       margin-bottom: 22px;
     }
 
@@ -54,7 +50,7 @@
       color: var(--primary-2);
       font-size: 13px;
       font-weight: 800;
-      letter-spacing: .14em;
+      letter-spacing: 0.14em;
     }
 
     h1 {
@@ -64,35 +60,10 @@
     }
 
     .subtitle {
-      color: var(--muted);
       margin: 0;
+      color: var(--muted);
       line-height: 1.6;
     }
-
-    .hero-actions {
-      display: flex;
-      gap: 10px;
-      flex-wrap: wrap;
-      justify-content: flex-end;
-    }
-
-    .btn {
-      border: 1px solid var(--line);
-      background: var(--panel-2);
-      color: var(--text);
-      padding: 10px 14px;
-      border-radius: 12px;
-      font-weight: 750;
-      transition: .18s ease;
-    }
-
-    .btn:hover { transform: translateY(-1px); border-color: #435779; }
-    .btn.primary {
-      border-color: transparent;
-      background: linear-gradient(135deg, var(--primary), #ff7a2c);
-      color: #201306;
-    }
-    .btn.danger { color: #ffd8dc; border-color: rgba(255,111,125,.45); }
 
     .metrics {
       display: grid;
@@ -102,25 +73,26 @@
     }
 
     .metric {
-      background: rgba(18,26,45,.86);
+      padding: 17px;
+      overflow: hidden;
       border: 1px solid var(--line);
       border-radius: 18px;
-      padding: 17px;
+      background: rgba(18, 26, 45, 0.86);
       box-shadow: var(--shadow);
     }
 
     .metric .label {
+      margin-bottom: 8px;
       color: var(--muted);
       font-size: 13px;
-      margin-bottom: 8px;
     }
 
     .metric .value {
-      font-size: 27px;
-      font-weight: 850;
       display: flex;
       align-items: baseline;
       gap: 7px;
+      font-size: 27px;
+      font-weight: 850;
     }
 
     .metric .mini {
@@ -130,25 +102,25 @@
     }
 
     .next-card {
-      border-color: rgba(255,157,54,.5);
-      background: linear-gradient(135deg, rgba(255,157,54,.16), rgba(18,26,45,.92));
+      border-color: rgba(255, 157, 54, 0.5);
+      background: linear-gradient(135deg, rgba(255, 157, 54, 0.16), rgba(18, 26, 45, 0.92));
     }
 
     .panel {
-      background: rgba(18,26,45,.92);
+      overflow: hidden;
       border: 1px solid var(--line);
       border-radius: 20px;
+      background: rgba(18, 26, 45, 0.92);
       box-shadow: var(--shadow);
-      overflow: hidden;
     }
 
     .toolbar {
-      padding: 14px;
       display: grid;
-      grid-template-columns: minmax(210px, 1.2fr) repeat(3, minmax(150px, .6fr));
+      grid-template-columns: minmax(210px, 1.2fr) repeat(3, minmax(150px, 0.6fr));
       gap: 10px;
+      padding: 14px;
       border-bottom: 1px solid var(--line);
-      background: rgba(24,34,57,.78);
+      background: rgba(24, 34, 57, 0.78);
     }
 
     .field {
@@ -165,59 +137,70 @@
 
     input, select {
       width: 100%;
-      border: 1px solid var(--line);
-      color: var(--text);
-      background: #0e1628;
       padding: 10px 11px;
+      color: var(--text);
+      border: 1px solid var(--line);
       border-radius: 11px;
       outline: none;
+      background: #0e1628;
     }
 
     input:focus, select:focus { border-color: var(--primary); }
-    input[type="checkbox"] { accent-color: var(--primary); }
+
+    .priority-note {
+      margin: 14px;
+      padding: 14px 16px;
+      color: #ffdeb2;
+      border: 1px solid rgba(255, 157, 54, 0.25);
+      border-radius: 14px;
+      background: rgba(255, 157, 54, 0.08);
+      font-size: 13px;
+      line-height: 1.55;
+    }
 
     .table-wrap { overflow-x: auto; }
+
     table {
       width: 100%;
-      border-collapse: collapse;
       min-width: 1160px;
+      border-collapse: collapse;
     }
 
     th, td {
       padding: 13px 12px;
-      border-bottom: 1px solid rgba(42,56,84,.72);
+      border-bottom: 1px solid rgba(42, 56, 84, 0.72);
       text-align: left;
       vertical-align: middle;
       font-size: 14px;
     }
 
     th {
-      color: #c7d1e6;
-      background: rgba(10,16,31,.54);
-      font-size: 12px;
-      letter-spacing: .02em;
       position: sticky;
       top: 0;
       z-index: 2;
+      color: #c7d1e6;
+      background: rgba(10, 16, 31, 0.96);
+      font-size: 12px;
+      letter-spacing: 0.02em;
     }
 
-    tr:hover td { background: rgba(255,255,255,.018); }
+    tr:hover td { background: rgba(255, 255, 255, 0.018); }
 
     .rank {
+      display: inline-grid;
       width: 34px;
       height: 34px;
-      border-radius: 11px;
-      display: inline-grid;
       place-items: center;
-      font-weight: 900;
-      background: #0e1628;
       border: 1px solid var(--line);
+      border-radius: 11px;
+      background: #0e1628;
+      font-weight: 900;
     }
 
     .rank.top {
       color: #2a1806;
-      background: linear-gradient(135deg, #ffd37b, #ff8a2d);
       border-color: transparent;
+      background: linear-gradient(135deg, #ffd37b, #ff8a2d);
     }
 
     .member {
@@ -225,73 +208,109 @@
       align-items: center;
       gap: 10px;
     }
-  .attendance-locked {
-    cursor: not-allowed;
-  }
-  
-  .attendance-locked .att-check {
-    opacity: 1;
-    accent-color: var(--primary);
-    cursor: not-allowed;
-  }
+
     .avatar {
+      display: grid;
       width: 38px;
       height: 38px;
-      border-radius: 12px;
-      display: grid;
-      place-items: center;
-      font-weight: 900;
-      background: rgba(102,168,255,.14);
-      color: #b9d7ff;
-      border: 1px solid rgba(102,168,255,.24);
       flex: 0 0 auto;
+      place-items: center;
+      color: #b9d7ff;
+      border: 1px solid rgba(102, 168, 255, 0.24);
+      border-radius: 12px;
+      background: rgba(102, 168, 255, 0.14);
+      font-weight: 900;
     }
 
     .member strong { display: block; }
-    .member small { color: var(--muted); display: block; margin-top: 2px; }
+    .member small {
+      display: block;
+      margin-top: 2px;
+      color: var(--muted);
+    }
 
     .badge {
       display: inline-flex;
       align-items: center;
       gap: 5px;
-      border-radius: 999px;
       padding: 6px 9px;
+      white-space: nowrap;
+      border: 1px solid transparent;
+      border-radius: 999px;
       font-size: 12px;
       font-weight: 800;
-      border: 1px solid transparent;
-      white-space: nowrap;
     }
 
-    .fixed { color: #baf3d9; background: rgba(72,213,151,.10); border-color: rgba(72,213,151,.28); }
-    .mercenary { color: #ffd4ae; background: rgba(255,157,54,.10); border-color: rgba(255,157,54,.30); }
-    .partner { color: #dcd2ff; background: rgba(169,139,255,.10); border-color: rgba(169,139,255,.30); }
-    .helmet-yes { color: #baf3d9; background: rgba(72,213,151,.10); border-color: rgba(72,213,151,.28); }
-    .helmet-no { color: #ffd2d7; background: rgba(255,111,125,.10); border-color: rgba(255,111,125,.28); }
+    .fixed {
+      color: #baf3d9;
+      border-color: rgba(72, 213, 151, 0.28);
+      background: rgba(72, 213, 151, 0.10);
+    }
+
+    .mercenary {
+      color: #ffd4ae;
+      border-color: rgba(255, 157, 54, 0.30);
+      background: rgba(255, 157, 54, 0.10);
+    }
+
+    .partner {
+      color: #dcd2ff;
+      border-color: rgba(169, 139, 255, 0.30);
+      background: rgba(169, 139, 255, 0.10);
+    }
+
+    .helmet-yes {
+      color: #baf3d9;
+      border-color: rgba(72, 213, 151, 0.28);
+      background: rgba(72, 213, 151, 0.10);
+    }
+
+    .helmet-no {
+      color: #ffd2d7;
+      border-color: rgba(255, 111, 125, 0.28);
+      background: rgba(255, 111, 125, 0.10);
+    }
 
     .attendance {
       display: flex;
-      gap: 7px;
       align-items: center;
+      gap: 7px;
       min-width: 260px;
     }
 
     .att-box {
       display: grid;
+      min-width: 44px;
       place-items: center;
       gap: 4px;
-      min-width: 44px;
     }
 
-    .att-box span {
-      font-size: 10px;
+    .att-box span.date {
       color: var(--muted);
+      font-size: 10px;
       white-space: nowrap;
     }
 
-    .att-check {
+    /* 실제 input이 아닌 표시용 체크박스라 사용자가 변경할 수 없습니다. */
+    .att-check-view {
+      position: relative;
+      display: inline-grid;
       width: 20px;
       height: 20px;
-      margin: 0;
+      place-items: center;
+      color: #201306;
+      border: 1px solid #52617c;
+      border-radius: 4px;
+      background: #0e1628;
+      font-size: 15px;
+      font-weight: 1000;
+      line-height: 1;
+      user-select: none;
+    }
+
+    .att-check-view.checked {
+      border-color: var(--primary);
+      background: var(--primary);
     }
 
     .count {
@@ -300,29 +319,9 @@
     }
 
     .subtext {
+      margin-top: 3px;
       color: var(--muted);
       font-size: 11px;
-      margin-top: 3px;
-    }
-
-    .row-actions { display: flex; gap: 7px; }
-    .icon-btn {
-      border: 1px solid var(--line);
-      background: #0e1628;
-      color: var(--text);
-      border-radius: 10px;
-      padding: 7px 9px;
-    }
-
-    .priority-note {
-      margin: 14px;
-      padding: 14px 16px;
-      border-radius: 14px;
-      color: #ffdeb2;
-      background: rgba(255,157,54,.08);
-      border: 1px solid rgba(255,157,54,.25);
-      line-height: 1.55;
-      font-size: 13px;
     }
 
     .empty {
@@ -331,78 +330,36 @@
       text-align: center;
     }
 
-    dialog {
-      width: min(560px, calc(100% - 28px));
-      background: var(--panel);
-      color: var(--text);
-      border: 1px solid var(--line);
-      border-radius: 20px;
-      padding: 0;
-      box-shadow: var(--shadow);
-    }
-
-    dialog::backdrop { background: rgba(0,0,0,.66); }
-
-    .modal-head {
-      padding: 18px 20px;
-      border-bottom: 1px solid var(--line);
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-    }
-
-    .modal-head h2 { margin: 0; font-size: 20px; }
-    .modal-body {
-      padding: 18px 20px;
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 13px;
-    }
-    .modal-body .wide { grid-column: 1 / -1; }
-    .modal-foot {
-      padding: 15px 20px 20px;
-      display: flex;
-      justify-content: flex-end;
-      gap: 9px;
-    }
-
     .footer-note {
+      margin-top: 14px;
       color: var(--muted);
       text-align: center;
       font-size: 12px;
-      margin-top: 14px;
     }
 
     @media (max-width: 900px) {
-      .hero { align-items: flex-start; flex-direction: column; }
-      .hero-actions { justify-content: flex-start; }
       .metrics { grid-template-columns: 1fr 1fr; }
       .toolbar { grid-template-columns: 1fr 1fr; }
     }
 
     @media (max-width: 560px) {
-      .app { width: min(100% - 16px, 1500px); padding-top: 16px; }
+      .app {
+        width: min(100% - 16px, 1500px);
+        padding-top: 16px;
+      }
+
       .metrics { grid-template-columns: 1fr; }
       .toolbar { grid-template-columns: 1fr; }
-      .modal-body { grid-template-columns: 1fr; }
-      .modal-body .wide { grid-column: auto; }
     }
   </style>
 </head>
 <body>
   <main class="app">
     <section class="hero">
-      <div>
-        <div class="eyebrow">MAPLE RAID MANAGER</div>
-        <h1>카오스 자쿰 출석부</h1>
-        <p class="subtitle">멤버 출석, 투구 획득 여부, 다음 투구 우선순위를 한 화면에서 관리합니다.</p>
-        <p class="subtitle">봄이가 피땀흘려만듬.</p>
-      </div>
-      <div class="hero-actions">
-          <button class="btn" id="addDateBtn">+ 회차 추가</button>
-          <button class="btn" id="exportBtn">JSON 내보내기</button>
-          <button class="btn primary" id="addMemberBtn">+ 멤버 등록</button>
-      </div>
+      <div class="eyebrow">MAPLE RAID MANAGER</div>
+      <h1>카오스 자쿰 출석부</h1>
+      <p class="subtitle">멤버 출석, 투구 획득 여부, 다음 투구 우선순위를 확인할 수 있습니다.</p>
+      <p class="subtitle">✨봄이가 피땀흘려만듬.✨</p>
     </section>
 
     <section class="metrics" aria-label="요약 지표">
@@ -412,7 +369,10 @@
       </article>
       <article class="metric">
         <div class="label">최근 회차 참석</div>
-        <div class="value"><span id="latestAttendance">0</span><span class="mini">명 · <span id="latestAttendanceDate">-</span> 기준</span></div>
+        <div class="value">
+          <span id="latestAttendance">0</span>
+          <span class="mini">명 · <span id="latestAttendanceDate">-</span> 기준</span>
+        </div>
       </article>
       <article class="metric">
         <div class="label">투구 미획득</div>
@@ -420,7 +380,7 @@
       </article>
       <article class="metric next-card">
         <div class="label">다음 투구 1순위</div>
-        <div class="value" style="font-size:22px"><span id="nextHelmet">-</span></div>
+        <div class="value" style="font-size: 22px"><span id="nextHelmet">-</span></div>
       </article>
     </section>
 
@@ -428,7 +388,7 @@
       <div class="toolbar">
         <div class="field">
           <label for="searchInput">닉네임 검색</label>
-          <input id="searchInput" placeholder="닉네임 또는 직업 검색" />
+          <input id="searchInput" type="search" placeholder="닉네임 또는 직업 검색" autocomplete="off" />
         </div>
         <div class="field">
           <label for="typeFilter">멤버 구분</label>
@@ -460,8 +420,9 @@
       </div>
 
       <div class="priority-note">
-        <strong>투구 우선순위 규칙</strong><br>
-        ① 이미 투구를 먹은 멤버는 순위에서 제외됩니다. ② 누적 참석 횟수가 많은 멤버가 먼저입니다.
+        <strong>투구 우선순위 규칙</strong><br />
+        ① 이미 투구를 먹은 멤버는 순위에서 제외됩니다.
+        ② 누적 참석 횟수가 많은 멤버가 먼저입니다.
         ③ 참석 횟수가 같으면 고정 멤버 → 대타 용병 → 깐부 순이며, 구분까지 같으면 레벨이 높은 순입니다.
       </div>
 
@@ -485,62 +446,11 @@
       </div>
     </section>
 
-    <p class="footer-note">데이터는 이 브라우저에 자동 저장됩니다. 다른 PC로 옮길 때는 JSON 내보내기를 사용하세요.</p>
+    <p class="footer-note">서버에 배포된 코드의 데이터를 표시합니다. 사용자는 검색과 정렬만 할 수 있습니다.</p>
   </main>
 
-  <dialog id="memberDialog">
-    <div class="modal-head">
-      <h2 id="dialogTitle">멤버 등록</h2>
-      <button class="icon-btn" id="closeDialogBtn" aria-label="닫기">✕</button>
-    </div>
-    <div class="modal-body">
-      <div class="field">
-        <label for="nicknameInput">닉네임</label>
-        <input id="nicknameInput" placeholder="예: 봄이" />
-      </div>
-      <div class="field">
-        <label for="levelInput">레벨</label>
-        <input id="levelInput" type="number" min="1" placeholder="예: 185" />
-      </div>
-      <div class="field">
-        <label for="jobInput">직업</label>
-        <input id="jobInput" placeholder="예: 히어로" />
-      </div>
-      <div class="field">
-        <label for="memberTypeInput">멤버 구분</label>
-        <select id="memberTypeInput">
-          <option value="fixed">고정 멤버</option>
-          <option value="mercenary">대타 용병</option>
-          <option value="partner">깐부</option>
-        </select>
-      </div>
-      <div class="field wide">
-        <label for="partnerGroupInput">깐부조 이름 또는 함께 채우는 사람</label>
-        <input id="partnerGroupInput" placeholder="예: A조 / 두광&봉구" />
-      </div>
-      <div class="field wide">
-        <label for="helmetInput">투구 획득 여부</label>
-        <select id="helmetInput">
-          <option value="false">아직 못 먹음</option>
-          <option value="true">먹음</option>
-        </select>
-      </div>
-    </div>
-    <div class="modal-foot">
-      <button class="btn" id="cancelDialogBtn">취소</button>
-      <button class="btn primary" id="saveMemberBtn">저장</button>
-    </div>
-  </dialog>
-
-
-  </dialog>
-
   <script>
-    const STORAGE_KEY = "chaos-zakum-attendance-v1";
-    const INITIAL_DATA_VERSION = "2026-07-24-priority-v2";
-
 const initialState = {
-      dataVersion: INITIAL_DATA_VERSION,
       dates: ["07/17", "07/24", "07/31", "08/07", "08/14"],
       members: [
         // 매일 참석자
@@ -589,55 +499,51 @@ const initialState = {
 
       ]
     };
-    let state = loadState();
-    let editingId = null;
+
+    // 브라우저 저장소를 사용하지 않습니다. 새로고침할 때마다 위 코드의 initialState를 읽습니다.
+    const state = {
+      dates: [...initialState.dates],
+      members: initialState.members.map(member => ({
+        ...member,
+        previousAttendance: Number(member.previousAttendance || 0),
+        attendance: Array.from(
+          { length: initialState.dates.length },
+          (_, index) => Boolean(member.attendance?.[index])
+        )
+      }))
+    };
 
     const el = id => document.getElementById(id);
     const rows = el("memberRows");
     const emptyState = el("emptyState");
-    const dialog = el("memberDialog");
-
-    function loadState() {
-      try {
-        const saved = localStorage.getItem(STORAGE_KEY);
-        if (!saved) return structuredClone(initialState);
-        const parsed = JSON.parse(saved);
-        if (!Array.isArray(parsed.dates) || !Array.isArray(parsed.members)) return structuredClone(initialState);
-
-        // HTML 안의 initialState가 갱신되면 이전 브라우저 저장값 대신 새 초기 데이터를 한 번 반영합니다.
-        if (parsed.dataVersion !== INITIAL_DATA_VERSION) {
-          return structuredClone(initialState);
-        }
-
-        return parsed;
-      } catch {
-        return structuredClone(initialState);
-      }
-    }
-
-    function saveState() {
-      localStorage.setItem(STORAGE_KEY, JSON.stringify(state));
-    }
 
     function currentAttendanceCount(member) {
       return member.attendance.filter(Boolean).length;
     }
 
     function attendanceCount(member) {
-      return Number(member.previousAttendance || 0) + currentAttendanceCount(member);
+      return member.previousAttendance + currentAttendanceCount(member);
     }
 
     function typeText(type) {
-      return { fixed: "고정 멤버", mercenary: "대타 용병", partner: "깐부" }[type];
+      return {
+        fixed: "고정 멤버",
+        mercenary: "대타 용병",
+        partner: "깐부"
+      }[type] || "기타";
     }
 
     function typePriority(type) {
-      return { fixed: 0, mercenary: 1, partner: 2 }[type] ?? 9;
+      return {
+        fixed: 0,
+        mercenary: 1,
+        partner: 2
+      }[type] ?? 9;
     }
 
     function getLatestActiveAttendanceIndex() {
       for (let index = state.dates.length - 1; index >= 0; index -= 1) {
-        if (state.members.some(member => Boolean(member.attendance[index]))) return index;
+        if (state.members.some(member => member.attendance[index])) return index;
       }
       return -1;
     }
@@ -653,13 +559,17 @@ const initialState = {
       const typeDiff = typePriority(a.type) - typePriority(b.type);
       if (typeDiff !== 0) return typeDiff;
 
-      if (b.level !== a.level) return b.level - a.level;
+      const levelDiff = b.level - a.level;
+      if (levelDiff !== 0) return levelDiff;
+
       return a.nickname.localeCompare(b.nickname, "ko");
     }
 
     function priorityCompare(a, b) {
+      // 투구 획득자는 아래쪽에 표시합니다.
       if (a.helmet !== b.helmet) return a.helmet ? 1 : -1;
 
+      // 누적 참석 횟수 → 멤버 구분 → 레벨 순서입니다.
       const attendanceDiff = attendanceCount(b) - attendanceCount(a);
       if (attendanceDiff !== 0) return attendanceDiff;
 
@@ -668,12 +578,13 @@ const initialState = {
 
     function latestAttendanceCompare(a, b) {
       const latestIndex = getLatestActiveAttendanceIndex();
-      const aLatest = latestIndex >= 0 && Boolean(a.attendance[latestIndex]);
-      const bLatest = latestIndex >= 0 && Boolean(b.attendance[latestIndex]);
+      const aLatest = latestIndex >= 0 && a.attendance[latestIndex];
+      const bLatest = latestIndex >= 0 && b.attendance[latestIndex];
+
       if (aLatest !== bLatest) return aLatest ? -1 : 1;
 
-      const lastAttendanceDiff = getLastAttendedIndex(b) - getLastAttendedIndex(a);
-      if (lastAttendanceDiff !== 0) return lastAttendanceDiff;
+      const recentDiff = getLastAttendedIndex(b) - getLastAttendedIndex(a);
+      if (recentDiff !== 0) return recentDiff;
 
       const attendanceDiff = attendanceCount(b) - attendanceCount(a);
       if (attendanceDiff !== 0) return attendanceDiff;
@@ -682,34 +593,41 @@ const initialState = {
     }
 
     function getFilteredMembers() {
-      const query = el("searchInput").value.trim().toLowerCase();
+      const query = el("searchInput").value.trim().toLocaleLowerCase("ko");
       const type = el("typeFilter").value;
       const helmet = el("helmetFilter").value;
       const sort = el("sortSelect").value;
 
       const list = state.members.filter(member => {
-        const matchesQuery =
-          member.nickname.toLowerCase().includes(query) ||
-          member.job.toLowerCase().includes(query);
+        const nickname = String(member.nickname || "").toLocaleLowerCase("ko");
+        const job = String(member.job || "").toLocaleLowerCase("ko");
+        const matchesQuery = nickname.includes(query) || job.includes(query);
         const matchesType = type === "all" || member.type === type;
         const matchesHelmet =
           helmet === "all" ||
           (helmet === "pending" && !member.helmet) ||
           (helmet === "done" && member.helmet);
+
         return matchesQuery && matchesType && matchesHelmet;
       });
 
       list.sort((a, b) => {
         if (sort === "latestAttendance") return latestAttendanceCompare(a, b);
+
         if (sort === "attendance") {
           const diff = attendanceCount(b) - attendanceCount(a);
           return diff !== 0 ? diff : baseTieCompare(a, b);
         }
+
         if (sort === "level") {
           const diff = b.level - a.level;
           return diff !== 0 ? diff : a.nickname.localeCompare(b.nickname, "ko");
         }
-        if (sort === "name") return a.nickname.localeCompare(b.nickname, "ko");
+
+        if (sort === "name") {
+          return a.nickname.localeCompare(b.nickname, "ko");
+        }
+
         return priorityCompare(a, b);
       });
 
@@ -717,12 +635,14 @@ const initialState = {
     }
 
     function getPriorityMap() {
-      const pending = state.members.filter(m => !m.helmet).sort(priorityCompare);
-      return new Map(pending.map((m, i) => [m.id, i + 1]));
+      const pending = state.members
+        .filter(member => !member.helmet)
+        .sort(priorityCompare);
+
+      return new Map(pending.map((member, index) => [member.id, index + 1]));
     }
 
     function render() {
-      normalizeAttendanceLength();
       const members = getFilteredMembers();
       const priorityMap = getPriorityMap();
       rows.innerHTML = "";
@@ -730,17 +650,22 @@ const initialState = {
       members.forEach(member => {
         const tr = document.createElement("tr");
         const rank = priorityMap.get(member.id);
-        const initials = member.nickname.slice(0, 1);
-        const attHtml = state.dates.map((date, index) => `
-          <label class="att-box">
-            <input class="att-check" type="checkbox"
-              data-action="attendance"
-              data-id="${member.id}"
-              data-index="${index}"
-              ${member.attendance[index] ? "checked" : ""}>
-            <span>${date}</span>
-          </label>
-        `).join("");
+        const initials = String(member.nickname).slice(0, 1);
+
+        const attendanceHtml = state.dates.map((date, index) => {
+          const attended = member.attendance[index];
+          return `
+            <div class="att-box">
+              <span
+                class="att-check-view ${attended ? "checked" : ""}"
+                role="img"
+                aria-label="${attended ? "참석" : "불참"}"
+                title="${attended ? "참석" : "불참"}"
+              >${attended ? "✓" : ""}</span>
+              <span class="date">${escapeHtml(date)}</span>
+            </div>
+          `;
+        }).join("");
 
         tr.innerHTML = `
           <td>
@@ -757,158 +682,50 @@ const initialState = {
               </div>
             </div>
           </td>
-          <td><strong>Lv.${member.level}</strong></td>
-          <td><span class="badge ${member.type}">${typeText(member.type)}</span></td>
+          <td><strong>Lv.${Number(member.level)}</strong></td>
+          <td><span class="badge ${escapeHtml(member.type)}">${typeText(member.type)}</span></td>
           <td>${escapeHtml(member.partnerGroup || "-")}</td>
-          <td><div class="attendance">${attHtml}</div></td>
+          <td><div class="attendance">${attendanceHtml}</div></td>
           <td>
             <div class="count">${attendanceCount(member)}회</div>
-            <div class="subtext">이전 ${Number(member.previousAttendance || 0)}회 + 현재 ${currentAttendanceCount(member)}회</div>
+            <div class="subtext">이전 ${member.previousAttendance}회 + 현재 ${currentAttendanceCount(member)}회</div>
           </td>
           <td>
-            <button class="badge ${member.helmet ? "helmet-yes" : "helmet-no"}"
-              data-action="helmet"
-              data-id="${member.id}">
+            <span class="badge ${member.helmet ? "helmet-yes" : "helmet-no"}">
               ${member.helmet ? "✓ 먹음" : "미획득"}
-            </button>
+            </span>
           </td>
         `;
+
         rows.appendChild(tr);
       });
 
       emptyState.hidden = members.length > 0;
       renderMetrics();
-      saveState();
     }
 
-    function normalizeAttendanceLength() {
-      state.members.forEach(member => {
-        if (!Array.isArray(member.attendance)) member.attendance = [];
-        if (!Number.isFinite(Number(member.previousAttendance))) member.previousAttendance = 0;
-        member.previousAttendance = Number(member.previousAttendance);
-        while (member.attendance.length < state.dates.length) member.attendance.push(false);
-        if (member.attendance.length > state.dates.length) {
-          member.attendance = member.attendance.slice(0, state.dates.length);
-        }
-      });
-    }
-  rows.addEventListener("click", event => {
-    const lockedAttendance = event.target.closest(".attendance-locked");
-  
-    if (lockedAttendance) {
-      event.preventDefault();
-      return;
-    }
-  
-    const button = event.target.closest("button[data-action]");
-    if (!button) return;
-  
-    const member = state.members.find(m => m.id === button.dataset.id);
-    if (!member) return;
-  
-    if (button.dataset.action === "helmet") {
-      member.helmet = !member.helmet;
-      render();
-    }
-  
-    if (button.dataset.action === "edit") {
-      openMemberDialog(member);
-    }
-  
-    if (button.dataset.action === "delete") {
-      if (confirm(`${member.nickname} 멤버를 삭제할까요?`)) {
-        state.members = state.members.filter(m => m.id !== member.id);
-        render();
-      }
-    }
-  });
     function renderMetrics() {
       el("memberCount").textContent = state.members.length;
+
       const latestIndex = getLatestActiveAttendanceIndex();
       const latestCount = latestIndex >= 0
-        ? state.members.filter(m => m.attendance[latestIndex]).length
+        ? state.members.filter(member => member.attendance[latestIndex]).length
         : 0;
+
       el("latestAttendance").textContent = latestCount;
-      el("latestAttendanceDate").textContent = latestIndex >= 0 ? state.dates[latestIndex] : "기록 없음";
-      el("helmetPending").textContent = state.members.filter(m => !m.helmet).length;
+      el("latestAttendanceDate").textContent = latestIndex >= 0
+        ? state.dates[latestIndex]
+        : "기록 없음";
 
-      const next = state.members.filter(m => !m.helmet).sort(priorityCompare)[0];
-      el("nextHelmet").textContent = next ? `${next.nickname} · Lv.${next.level}` : "모두 획득 완료";
-    }
+      el("helmetPending").textContent = state.members.filter(member => !member.helmet).length;
 
-    function openMemberDialog(member = null) {
-      editingId = member?.id ?? null;
-      el("dialogTitle").textContent = member ? "멤버 수정" : "멤버 등록";
-      el("nicknameInput").value = member?.nickname ?? "";
-      el("levelInput").value = member?.level ?? "";
-      el("jobInput").value = member?.job ?? "";
-      el("memberTypeInput").value = member?.type ?? "fixed";
-      el("partnerGroupInput").value = member?.partnerGroup ?? "";
-      el("helmetInput").value = String(member?.helmet ?? false);
-      dialog.showModal();
-    }
+      const next = state.members
+        .filter(member => !member.helmet)
+        .sort(priorityCompare)[0];
 
-    function closeMemberDialog() {
-      dialog.close();
-      editingId = null;
-    }
-
-    function saveMember() {
-      const nickname = el("nicknameInput").value.trim();
-      const level = Number(el("levelInput").value);
-      const job = el("jobInput").value.trim();
-      const type = el("memberTypeInput").value;
-      const partnerGroup = el("partnerGroupInput").value.trim() || "-";
-      const helmet = el("helmetInput").value === "true";
-
-      if (!nickname || !job || !Number.isFinite(level) || level < 1) {
-        alert("닉네임, 레벨, 직업을 정확히 입력해주세요.");
-        return;
-      }
-
-      if (editingId) {
-        const member = state.members.find(m => m.id === editingId);
-        Object.assign(member, { nickname, level, job, type, partnerGroup, helmet });
-      } else {
-        state.members.push({
-          id: crypto.randomUUID(),
-          nickname,
-          level,
-          job,
-          type,
-          partnerGroup,
-          helmet,
-          previousAttendance: 0,
-          attendance: Array(state.dates.length).fill(false)
-        });
-      }
-
-      closeMemberDialog();
-      render();
-    }
-
-    function addDate() {
-      const defaultValue = new Date().toLocaleDateString("ko-KR", {
-        month: "2-digit",
-        day: "2-digit"
-      }).replace(". ", "/").replace(".", "");
-
-      const date = prompt("추가할 회차 날짜를 입력하세요. 예: 07/24", defaultValue);
-      if (!date?.trim()) return;
-
-      state.dates.push(date.trim());
-      state.members.forEach(member => member.attendance.push(false));
-      render();
-    }
-
-    function exportJson() {
-      const blob = new Blob([JSON.stringify(state, null, 2)], { type: "application/json" });
-      const url = URL.createObjectURL(blob);
-      const a = document.createElement("a");
-      a.href = url;
-      a.download = `카오스자쿰_출석부_${new Date().toISOString().slice(0,10)}.json`;
-      a.click();
-      URL.revokeObjectURL(url);
+      el("nextHelmet").textContent = next
+        ? `${next.nickname} · Lv.${next.level}`
+        : "모두 획득 완료";
     }
 
     function escapeHtml(value) {
@@ -920,45 +737,10 @@ const initialState = {
         .replaceAll("'", "&#039;");
     }
 
-    rows.addEventListener("change", event => {
-      const target = event.target;
-      if (target.dataset.action !== "attendance") return;
-      const member = state.members.find(m => m.id === target.dataset.id);
-      member.attendance[Number(target.dataset.index)] = target.checked;
-      render();
-    });
-
-    rows.addEventListener("click", event => {
-      const button = event.target.closest("button[data-action]");
-      if (!button) return;
-      const member = state.members.find(m => m.id === button.dataset.id);
-      if (!member) return;
-
-      if (button.dataset.action === "helmet") {
-        member.helmet = !member.helmet;
-        render();
-      }
-
-      if (button.dataset.action === "edit") openMemberDialog(member);
-
-      if (button.dataset.action === "delete") {
-        if (confirm(`${member.nickname} 멤버를 삭제할까요?`)) {
-          state.members = state.members.filter(m => m.id !== member.id);
-          render();
-        }
-      }
-    });
-
     ["searchInput", "typeFilter", "helmetFilter", "sortSelect"].forEach(id => {
-      el(id).addEventListener(id === "searchInput" ? "input" : "change", render);
+      const eventName = id === "searchInput" ? "input" : "change";
+      el(id).addEventListener(eventName, render);
     });
-
-    el("addMemberBtn").addEventListener("click", () => openMemberDialog());
-    el("addDateBtn").addEventListener("click", addDate);
-    el("exportBtn").addEventListener("click", exportJson);
-    el("saveMemberBtn").addEventListener("click", saveMember);
-    el("closeDialogBtn").addEventListener("click", closeMemberDialog);
-    el("cancelDialogBtn").addEventListener("click", closeMemberDialog);
 
     render();
   </script>
