@@ -468,7 +468,6 @@
               <th>회차별 출석</th>
               <th>누적</th>
               <th>투구</th>
-              <th>관리</th>
             </tr>
           </thead>
           <tbody id="memberRows"></tbody>
@@ -726,7 +725,7 @@ const initialState = {
               data-action="attendance"
               data-id="${member.id}"
               data-index="${index}"
-              ${member.attendance[index] ? "checked" : ""}>
+              ${member.attendance[index] ? "checked" : ""}disabled>
             <span>${date}</span>
           </label>
         `).join("");
@@ -760,12 +759,6 @@ const initialState = {
               data-id="${member.id}">
               ${member.helmet ? "✓ 먹음" : "미획득"}
             </button>
-          </td>
-          <td>
-            <div class="row-actions">
-              <button class="icon-btn" data-action="edit" data-id="${member.id}">수정</button>
-              <button class="icon-btn" data-action="delete" data-id="${member.id}">삭제</button>
-            </div>
           </td>
         `;
         rows.appendChild(tr);
