@@ -86,7 +86,36 @@
       color: var(--muted);
       font-size: 13px;
     }
-
+    .next-ranking {
+      display: block !important;
+      font-size: 15px !important;
+    }
+    
+    .next-rank-item {
+      display: grid;
+      grid-template-columns: 38px minmax(90px, 1fr) auto;
+      align-items: center;
+      gap: 8px;
+      padding: 7px 0;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+    }
+    
+    .next-rank-item:last-child {
+      border-bottom: 0;
+    }
+    
+    .next-rank-item strong {
+      color: var(--primary-2);
+    }
+    
+    .next-rank-item span {
+      font-weight: 800;
+    }
+    
+    .next-rank-item small {
+      color: var(--muted);
+      font-size: 11px;
+    }
     .metric .value {
       display: flex;
       align-items: baseline;
@@ -379,7 +408,7 @@
         <div class="value"><span id="helmetPending">0</span><span class="mini">명</span></div>
       </article>
       <article class="metric next-card">
-        <div class="label">다음 투구 1순위</div>
+        <div class="label">다음 확정 투구 멤</div>
         <div class="value" style="font-size: 22px"><span id="nextHelmet">-</span></div>
       </article>
     </section>
@@ -721,10 +750,21 @@ const initialState = {
 
       const next = state.members
         .filter(member => !member.helmet)
-        .sort(priorityCompare)[0];
-
-      el("nextHelmet").textContent = next
-        ? `${next.nickname} · Lv.${next.level}`
+        .sort(priorityCompare).slice(0, 4)
+    
+      const nextMembers = state.members
+        .filter(member => !member.helmet)
+        .sort(priorityCompare)
+        .slice(0, 4);
+      
+      el("nextHelmet").innerHTML = nextMembers.length
+        ? nextMembers.map((member, index) => `
+            <div class="next-rank-item">
+              <strong>${index + 1}위</strong>
+              <span>${escapeHtml(member.nickname)}</span>
+              <small>Lv.${member.level} · ${attendanceCount(member)}회</small>
+            </div>
+          `).join("")
         : "모두 획득 완료";
     }
 
