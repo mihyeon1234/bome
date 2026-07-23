@@ -488,7 +488,7 @@
     <div class="modal-body">
       <div class="field">
         <label for="nicknameInput">닉네임</label>
-        <input id="nicknameInput" placeholder="예: 자쿰은명" />
+        <input id="nicknameInput" placeholder="예: 봄이로다" />
       </div>
       <div class="field">
         <label for="levelInput">레벨</label>
@@ -508,7 +508,7 @@
       </div>
       <div class="field wide">
         <label for="partnerGroupInput">깐부조 이름 또는 함께 채우는 사람</label>
-        <input id="partnerGroupInput" placeholder="예: A조 / 은명·초코" />
+        <input id="partnerGroupInput" placeholder="예: A조 / 두광&봉구" />
       </div>
       <div class="field wide">
         <label for="helmetInput">투구 획득 여부</label>
@@ -564,17 +564,17 @@ const initialState = {
 
         // 교대·당일 참석자
         { id: crypto.randomUUID(), nickname: "주문완료", level: 182, job: "나로", type: "mercenary", partnerGroup: "-", helmet: false, previousAttendance: 0, attendance: [false,false,false,false,false] },
-        { id: crypto.randomUUID(), nickname: "딸기빛봉구", level: 181, job: "섀도", type: "mercenary", partnerGroup: "-", helmet: false, previousAttendance: 1, attendance: [true,false,false,false,false] },
+        { id: crypto.randomUUID(), nickname: "딸기빛봉구", level: 181, job: "섀도", type: "mercenary", partnerGroup: "-", helmet: false, previousAttendance: 0, attendance: [true,false,false,false,false] },
         { id: crypto.randomUUID(), nickname: "야미르", level: 172, job: "나로", type: "mercenary", partnerGroup: "-", helmet: false, previousAttendance: 0, attendance: [false,true,false,false,false] },
-        { id: crypto.randomUUID(), nickname: "봇삶", level: 172, job: "나로", type: "mercenary", partnerGroup: "-", helmet: false, previousAttendance: 1, attendance: [true,false,false,false,false] },
+        { id: crypto.randomUUID(), nickname: "봇삶", level: 172, job: "나로", type: "mercenary", partnerGroup: "-", helmet: false, previousAttendance: 0, attendance: [true,false,false,false,false] },
         { id: crypto.randomUUID(), nickname: "무협소설", level: 172, job: "보마", type: "mercenary", partnerGroup: "-", helmet: false, previousAttendance: 0, attendance: [false,false,false,false,false] },
-        { id: crypto.randomUUID(), nickname: "윤성쭈", level: 169, job: "나로", type: "mercenary", partnerGroup: "-", helmet: false, previousAttendance: 1, attendance: [true,false,false,false,false] },
-        { id: crypto.randomUUID(), nickname: "갓진신궁", level: 162, job: "신궁", type: "mercenary", partnerGroup: "-", helmet: false, previousAttendance: 1, attendance: [true,false,false,false,false] },
-        { id: crypto.randomUUID(), nickname: "표도정석", level: 162, job: "나로", type: "mercenary", partnerGroup: "-", helmet: false, previousAttendance: 1, attendance: [true,false,false,false,false] },
+        { id: crypto.randomUUID(), nickname: "윤성쭈", level: 169, job: "나로", type: "mercenary", partnerGroup: "-", helmet: false, previousAttendance: 0, attendance: [true,false,false,false,false] },
+        { id: crypto.randomUUID(), nickname: "갓진신궁", level: 162, job: "신궁", type: "mercenary", partnerGroup: "-", helmet: false, previousAttendance: 0, attendance: [true,false,false,false,false] },
+        { id: crypto.randomUUID(), nickname: "표도정석", level: 162, job: "나로", type: "mercenary", partnerGroup: "-", helmet: false, previousAttendance: 0, attendance: [true,false,false,false,false] },
         { id: crypto.randomUUID(), nickname: "활로뚜까팸", level: 161, job: "보마", type: "mercenary", partnerGroup: "-", helmet: false, previousAttendance: 0, attendance: [false,false,false,false,false] },
-        { id: crypto.randomUUID(), nickname: "박보우", level: 151, job: "보마", type: "mercenary", partnerGroup: "-", helmet: false, previousAttendance: 1, attendance: [true,true,false,false,false] },
-        { id: crypto.randomUUID(), nickname: "뭐날리는데", level: 180, job: "나로", type: "mercenary", partnerGroup: "-", helmet: false, previousAttendance: 1, attendance: [true,false,false,false,false] },
-        { id: crypto.randomUUID(), nickname: "남덕유산", level: 180, job: "팔라", type: "mercenary", partnerGroup: "-", helmet: false, previousAttendance: 1, attendance: [false,true,false,false,false] }
+        { id: crypto.randomUUID(), nickname: "박보우", level: 151, job: "보마", type: "mercenary", partnerGroup: "-", helmet: false, previousAttendance: 0, attendance: [true,true,false,false,false] },
+        { id: crypto.randomUUID(), nickname: "뭐날리는데", level: 180, job: "나로", type: "mercenary", partnerGroup: "-", helmet: false, previousAttendance: 0, attendance: [true,false,false,false,false] },
+        { id: crypto.randomUUID(), nickname: "남덕유산", level: 180, job: "팔라", type: "mercenary", partnerGroup: "-", helmet: false, previousAttendance: 0, attendance: [false,true,false,false,false] }
 
       ]
     };
